@@ -4,23 +4,27 @@
 {
     //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "comment",
+            "title":"Comment"
+        },
+        {
+            "id": "visibility_code",
+            "title":"Visibility"
         }
-        */
     ],
     //Required. Outputs the module emits.
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "updateKey",
+            "title":"Key"
+        },
+        {
+            "id": "updateUrl",
+            "title":"URL"
         }
-      */
     ],
-    "title": "LinkedIn Share URL" /* Required.A display name for the module */
+    "icon": "linkedin",
+    /* Required.A display name for the module */
+    "title": "LinkedIn Share URL"
 }
