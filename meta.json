@@ -24,7 +24,13 @@
             "title":"URL"
         }
     ],
+    "providers": [{
+        "name": "linkedin",
+        "scopes": [
+            "r_basicprofile",
+            "w_share"
+        ]
+    }],
     "icon": "linkedin",
-    /* Required.A display name for the module */
     "title": "LinkedIn Share URL"
 }

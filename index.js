@@ -11,24 +11,6 @@ var pickInputs = {
     };
 
 module.exports = {
-
-    /**
-     * Authorize module.
-     *
-     * @param dexter
-     * @returns {*}
-     */
-    authModule: function (dexter) {
-        var accessToken = dexter.environment('linkedin_access_token');
-
-        if (accessToken)
-            return Linkedin.init(accessToken);
-
-        else
-            return false;
-    },
-
-
     /**
      * The main entry point for the Dexter module
      *
@@ -36,20 +18,18 @@ module.exports = {
      * @param {AppData} dexter Container for all data used in this workflow.
      */
     run: function(step, dexter) {
-        var linkedIn = this.authModule(dexter);
+        var linkedIn = Linkedin.init(dexter.provider('linkedin').credentials('access_token')),
+            inputs = util.pickInputs(step, pickInputs),
+            validateErrors = util.checkValidateErrors(inputs, pickInputs);
 
-        if (!linkedIn)
-            return this.fail('A [linkedin_access_token] environment need for this module.');
+        if (validateErrors)
+            return this.fail(validateErrors);
 
-        linkedIn.people.share(util.pickStringInputs(step, pickInputs), function(err, data) {
-            if (err)
-                this.fail(err);
-
-            else if (data.errorCode !== undefined)
-                this.fail(data.message || 'Error Code'.concat(data.errorCode));
-
+        linkedIn.people.share(inputs, function(err, data) {
+            if (err || (data && data.errorCode !== undefined))
+                this.fail(err || (data.message || 'Error Code: '.concat(data.errorCode)));
             else
-                this.complete(util.pickResult(data, pickOutputs));
+                this.complete(util.pickOutputs(data, pickOutputs));
 
         }.bind(this));
     }
