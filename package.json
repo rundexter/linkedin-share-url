@@ -1,13 +1,17 @@
 {
-  "name": "linkedin-share-url",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "author": "Alexander",
-  "license": "ISC",
-  "private": true,
-  "dependencies": {
-    "lodash": "^3.10.1",
-    "node-linkedin": "^0.5.3"
-  }
+   "name": "linkedin-share-url",
+   "version": "0.0.1",
+   "description": "Share via a comment containing a URL",
+   "main": "index.js",
+   "author": "Run Dexter, Inc",
+   "license": "MIT",
+   "private": true,
+   "dependencies": {
+      "lodash": "^3.10.1",
+      "node-linkedin": "^0.5.3"
+   },
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/rundexter/linkedin-share-url"
+   }
 }

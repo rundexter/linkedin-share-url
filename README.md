@@ -1,4 +1,5 @@
 # LinkedIn Share URL
+Share via a comment containing a URL.
 
 ### DOCS
 https://developer.linkedin.com/docs/share-on-linkedin
